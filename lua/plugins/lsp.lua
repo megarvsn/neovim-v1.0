@@ -19,7 +19,32 @@ return {
 				},
 			})
 
-			-- 2. Включаем серверы под стек:
+			-- 2. intelephense: не индексировать мусор Битрикс-проекта
+			--    (кеш, бэкапы, upload) — память и скорость подсказок
+			vim.lsp.config("intelephense", {
+				settings = {
+					intelephense = {
+						files = {
+							exclude = {
+								"**/vendor/**",
+								"**/node_modules/**",
+								"**/.git/**",
+								"**/.hg/**",
+								"**/.idea/**",
+								"**/upload/**",
+								"**/bitrix/cache/**",
+								"**/bitrix/managed_cache/**",
+								"**/bitrix/stack_cache/**",
+								"**/bitrix/html_pages/**",
+								"**/bitrix/backup/**",
+								"**/bitrix/tmp/**",
+							},
+						},
+					},
+				},
+			})
+
+			-- 3. Включаем серверы под стек:
 			--    html (html), css/scss (cssls), js/ts (ts_ls), php/Битрикс (intelephense),
 			--    sql (sqlls), emmet (emmet_ls)
 			vim.lsp.enable({ "lua_ls", "html", "cssls", "ts_ls", "intelephense", "sqlls", "emmet_ls" })
