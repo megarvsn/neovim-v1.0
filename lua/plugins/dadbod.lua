@@ -16,7 +16,7 @@ return {
 			vim.g.db_ui_save_location = vim.fn.stdpath("data") .. "/db_ui"
 			vim.g.db_ui_use_nerd_fonts = 1
 			-- По умолчанию запрос НЕ выполняется при сохранении файла —
-			-- выполнение по <CR> или <Leader>RS. Меняется на 1, если удобнее "сохранил = выполнил".
+			-- выполнение по <CR> или <Leader>S. Меняется на 1, если удобнее "сохранил = выполнил".
 			vim.g.db_ui_execute_on_save = 0
 			-- Подключения хранятся в ~/.local/share/nvim/db_ui/connections.json
 		end,

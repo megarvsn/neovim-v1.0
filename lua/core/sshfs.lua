@@ -32,7 +32,7 @@ local function mount(name)
 	local remote = projects[name]
 	if not remote then
 		vim.notify(
-			"SshfsMount: нет проекта '" .. name .. "'. Заполните таблицу projects в lua/plugins/sshfs.lua (:SshfsList)",
+			"SshfsMount: нет проекта '" .. name .. "'. Заполните таблицу projects в lua/core/sshfs.lua (:SshfsList)",
 			vim.log.levels.ERROR
 		)
 		return
@@ -86,7 +86,7 @@ local function list()
 	local lines = { "sshfs-проекты:" }
 	local names = project_names()
 	if #names == 0 then
-		table.insert(lines, "  (таблица projects в lua/plugins/sshfs.lua пуста)")
+		table.insert(lines, "  (таблица projects в lua/core/sshfs.lua пуста)")
 	end
 	for _, name in ipairs(names) do
 		local dest = root .. "/" .. name
