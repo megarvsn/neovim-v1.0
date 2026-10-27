@@ -19,6 +19,16 @@ vim.opt.scrolloff = 8
 vim.opt.wrap = false
 vim.opt.termguicolors = true
 
+-- Локальная история версий: persistent undo (переживает закрытие Neovim и перезагрузку)
+local undodir = vim.fn.stdpath('data') .. '/undo'
+pcall(vim.fn.mkdir, undodir, 'p')
+vim.opt.undofile = true
+vim.opt.undodir = undodir
+
+-- Поведение автодополнения (nvim-cmp) и отзывчивость LSP
+vim.opt.completeopt = 'menu,menuone,noselect'
+vim.opt.updatetime = 250
+
 -- Fillchars
 vim.opt.fillchars = {
 	vert = "│",

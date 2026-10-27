@@ -8,11 +8,12 @@ return {
 		},
 		config = function()
 			require('telescope').setup({})
+			require('telescope').load_extension('undo')
 			local builtin = require('telescope.builtin')
-			vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-			vim.keymap.set('n', '<leader>fw', builtin.live_grep, {})
-			vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-			vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+			vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Файлы (telescope)' })
+			vim.keymap.set('n', '<leader>fw', builtin.live_grep, { desc = 'Поиск текста (telescope)' })
+			vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Буферы (telescope)' })
+			vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Помощь (telescope)' })
 		end
 	}
 }

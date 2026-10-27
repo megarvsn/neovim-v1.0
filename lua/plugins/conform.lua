@@ -6,12 +6,16 @@ return {
 			require("conform").setup({
 				formatters_by_ft = {
 					lua = { "stylua" },
-					python = { "isort", "black" },
-					rust = { "rustfmt", lsp_format = "fallback" },
 					javascript = { "prettier" },
 					typescript = { "prettier" },
 					javascriptreact = { "prettier" },
 					typescriptreact = { "prettier" },
+					html = { "prettier" },
+					css = { "prettier" },
+					scss = { "prettier" },
+					json = { "prettier" },
+					sql = { "sql_formatter" },
+					mysql = { "sql_formatter" },
 				},
 			})
 			vim.api.nvim_create_autocmd("BufWritePre", {

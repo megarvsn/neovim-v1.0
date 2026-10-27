@@ -2,7 +2,13 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
-			-- 1. Настраиваем lua_ls отдельно, чтобы он знал про глобальный объект 'vim'
+			-- 0. Capabilities от nvim-cmp (автодополнение из LSP)
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+			-- Общая настройка для всех серверов (Neovim 0.11+)
+			vim.lsp.config("*", { capabilities = capabilities })
+
+			-- 1. lua_ls: знает про глобальный объект 'vim' (для правки конфигов Neovim)
 			vim.lsp.config("lua_ls", {
 				settings = {
 					Lua = {
@@ -13,8 +19,10 @@ return {
 				},
 			})
 
-			-- 2. Включаем серверы
-			vim.lsp.enable({ "lua_ls", "gopls", "ts_ls" })
+			-- 2. Включаем серверы под стек:
+			--    html (html), css/scss (cssls), js/ts (ts_ls), php/Битрикс (intelephense),
+			--    sql (sqlls), emmet (emmet_ls)
+			vim.lsp.enable({ "lua_ls", "html", "cssls", "ts_ls", "intelephense", "sqlls", "emmet_ls" })
 
 			-- 3. Красивые иконки в колонке слева
 			local signs = { Error = "❌", Warn = "⚠️", Hint = "💡", Info = "ℹ️" }
@@ -44,7 +52,9 @@ return {
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-					vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+					-- <C-k> занят навигацией по окнам в core/mappings.lua,
+					-- поэтому signature help висит на <leader>ls
+					vim.keymap.set("n", "<Leader>ls", vim.lsp.buf.signature_help, opts)
 					vim.keymap.set("n", "<Leader>D", vim.lsp.buf.type_definition, opts)
 					vim.keymap.set("n", "<Leader>lr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename Symbol" })
 					vim.keymap.set({ "n", "v" }, "<Leader>la", vim.lsp.buf.code_action, opts)
