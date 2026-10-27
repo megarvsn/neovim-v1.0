@@ -40,6 +40,15 @@ return {
 				},
 				undercurl = true,
 				update_in_insert = false,
+				float = { border = "rounded" },
+			})
+
+			-- Показ полного текста ошибки при задержке курсора на строке
+			vim.api.nvim_create_autocmd("CursorHold", {
+				group = vim.api.nvim_create_augroup("UserDiagnosticsFloat", {}),
+				callback = function()
+					vim.diagnostic.open_float(nil, { focusable = false, border = "rounded" })
+				end,
 			})
 
 			-- 5. Настройка горячих клавиш при подключении к LSP
@@ -48,23 +57,22 @@ return {
 				callback = function(ev)
 					vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-					local opts = { buffer = ev.buf }
-					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+					vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf, desc = "К определению" })
+					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Документация" })
+					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = ev.buf, desc = "К реализации" })
 					-- <C-k> занят навигацией по окнам в core/mappings.lua,
 					-- поэтому signature help висит на <leader>ls
-					vim.keymap.set("n", "<Leader>ls", vim.lsp.buf.signature_help, opts)
-					vim.keymap.set("n", "<Leader>D", vim.lsp.buf.type_definition, opts)
-					vim.keymap.set("n", "<Leader>lr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Rename Symbol" })
-					vim.keymap.set({ "n", "v" }, "<Leader>la", vim.lsp.buf.code_action, opts)
+					vim.keymap.set("n", "<Leader>D", vim.lsp.buf.type_definition, { buffer = ev.buf, desc = "К определению типа" })
+					vim.keymap.set("n", "<Leader>lr", vim.lsp.buf.rename, { buffer = ev.buf, desc = "Переименовать символ" })
+					vim.keymap.set({ "n", "v" }, "<Leader>la", vim.lsp.buf.code_action, { buffer = ev.buf, desc = "Быстрые действия" })
 					vim.keymap.set("n", "<Leader>lf", function()
 						vim.lsp.buf.format({ async = true })
-					end, opts)
+					end, { buffer = ev.buf, desc = "Форматировать (LSP)" })
+					vim.keymap.set("n", "<Leader>ls", vim.lsp.buf.signature_help, { buffer = ev.buf, desc = "Аргументы функции" })
 				end,
 			})
 
-			-- 6. ИСПРАВЛЕНИЕ ПРОЗРАЧНОСТИ И НАСТРОЙКА ОКНА HOVER (Shift-K)
+			-- ИСПРАВЛЕНИЕ ПРОЗРАЧНОСТИ И НАСТРОЙКА ОКНА HOVER (Shift-K)
 			-- Принудительно отключаем прозрачность для всех новых окон LSP
 			local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 			function vim.lsp.util.open_floating_preview(contents, syntax, opts)
@@ -75,12 +83,7 @@ return {
 				vim.wo[winnr].winblend = 0
 				return bufnr, winnr
 			end
-
-			-- Переопределяем цвета, связывая их с базовым фоном редактора (Normal)
-			-- Ссылка link = "Normal" берет фон вашей текущей темы, убирая прозрачность
-			vim.api.nvim_set_hl(0, "NormalFloat", { link = "Normal" })
-			-- Делаем рамку контрастной (например, оранжевой/персиковой #fab387)
-			vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#fab387", link = "Normal" })
+			-- Цвета рамок берутся из темы (kanagawa)
 		end,
 	},
 }

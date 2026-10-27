@@ -1,38 +1,65 @@
 -- Leader
 vim.g.mapleader = ' '
 
--- Insert
-vim.keymap.set('i', 'jj', '<ESC>')
+-- Вставка / выход
+vim.keymap.set('i', 'jj', '<ESC>', { desc = 'Выйти в обычный режим' })
 
--- Neo-tree
-vim.keymap.set('n', '<leader>e', ':Neotree left toggle reveal<CR>')
+-- Базовые удобства
+vim.keymap.set('n', '<Esc>', ':noh<CR><Esc>', { desc = 'Снять подсветку поиска' })
+vim.keymap.set('n', 'Y', 'y$', { desc = 'Копировать до конца строки' })
 
--- Buffers
-vim.keymap.set('n', '<leader>w', ':w<CR>')
+-- --- Файлы -------------------------------------------------------------
+vim.keymap.set('n', '<leader>e', ':Neotree left toggle reveal<CR>', { desc = 'Дерево файлов' })
+vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Сохранить файл' })
 
--- Navigation
-vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
-vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
-vim.keymap.set('n', '<c-h>', ':wincmd h<CR>')
-vim.keymap.set('n', '<c-l>', ':wincmd l<CR>')
+-- --- Поиск (<leader>f) -------------------------------------------------
+vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>', { desc = 'Файл по имени' })
+vim.keymap.set('n', '<leader>fw', ':Telescope live_grep<CR>', { desc = 'Текст по проекту' })
+vim.keymap.set('n', '<leader>fb', ':Telescope buffers<CR>', { desc = 'Открытые буферы' })
+vim.keymap.set('n', '<leader>fh', ':Telescope help_tags<CR>', { desc = 'Документация Neovim' })
+vim.keymap.set('n', '<leader>fu', ':Telescope undo<CR>', { desc = 'История правок файла (undo)' })
 
--- Splits
-vim.keymap.set('n', '|', ':vsplit<CR>')
-vim.keymap.set('n', '\\', ':split<CR>')
+-- --- Git (<leader>g) ---------------------------------------------------
+vim.keymap.set('n', '<leader>gs', ':Git<CR>', { desc = 'Статус/стейджинг' })
+vim.keymap.set('n', '<leader>gc', ':Git commit<CR>', { desc = 'Коммит' })
+vim.keymap.set('n', '<leader>gp', ':Git push<CR>', { desc = 'Отправить (push)' })
+vim.keymap.set('n', '<leader>gP', ':Git pull<CR>', { desc = 'Получить (pull)' })
+vim.keymap.set('n', '<leader>gb', ':Git blame<CR>', { desc = 'Кто менял строки (blame)' })
+vim.keymap.set('n', '<leader>gl', ':Flog<CR>', { desc = 'История коммитов (граф)' })
 
--- Tabs
-vim.keymap.set('n', '<Tab>', ':BufferLineCycleNext<CR>')
-vim.keymap.set('n', '<s-Tab>', ':BufferLineCyclePrev<CR>')
-vim.keymap.set('n', '<Leader>x', ':BufferLinePickClose<CR>')
-vim.keymap.set('n', '<c-x>', ':BufferLineCloseOthers<CR>')
+-- --- База данных (<leader>d) -------------------------------------------
+vim.keymap.set('n', '<leader>db', ':DBUI<CR>', { desc = 'Обзор базы (DBUI)' })
 
--- Git (fugitive): свой git-сервер и GitHub — одинаково (remote в .git/config)
-vim.keymap.set('n', '<leader>gs', ':Git<CR>', { desc = 'Git status' })
-vim.keymap.set('n', '<leader>gc', ':Git commit<CR>', { desc = 'Git commit' })
-vim.keymap.set('n', '<leader>gp', ':Git push<CR>', { desc = 'Git push' })
-vim.keymap.set('n', '<leader>gP', ':Git pull<CR>', { desc = 'Git pull' })
-vim.keymap.set('n', '<leader>gb', ':Git blame<CR>', { desc = 'Git blame' })
-vim.keymap.set('n', '<leader>gl', ':Flog<CR>', { desc = 'Git история (граф)' })
+-- --- Окна и вкладки ------------------------------------------------------
+vim.keymap.set('n', '<c-k>', ':wincmd k<CR>', { desc = 'Окно вверх' })
+vim.keymap.set('n', '<c-j>', ':wincmd j<CR>', { desc = 'Окно вниз' })
+vim.keymap.set('n', '<c-h>', ':wincmd h<CR>', { desc = 'Окно влево' })
+vim.keymap.set('n', '<c-l>', ':wincmd l<CR>', { desc = 'Окно вправо' })
+vim.keymap.set('n', '|', ':vsplit<CR>', { desc = 'Вертикальный сплит' })
+vim.keymap.set('n', '\\', ':split<CR>', { desc = 'Горизонтальный сплит' })
 
--- База данных: <leader>db — :DBUI (см. lua/plugins/dadbod.lua)
--- Локальная история версий: <leader>fu — telescope-undo (см. lua/plugins/undo.lua)
+-- Вкладки
+vim.keymap.set('n', '<Tab>', ':BufferLineCycleNext<CR>', { desc = 'Следующая вкладка' })
+vim.keymap.set('n', '<s-Tab>', ':BufferLineCyclePrev<CR>', { desc = 'Предыдущая вкладка' })
+vim.keymap.set('n', '<Leader>x', ':BufferLinePickClose<CR>', { desc = 'Выбрать вкладку на закрытие' })
+vim.keymap.set('n', '<c-x>', ':BufferLineCloseOthers<CR>', { desc = 'Закрыть все вкладки кроме текущей' })
+
+-- --- Тумблеры интерфейса (<leader>u) -------------------------------------
+vim.keymap.set('n', '<leader>ud', function()
+	if vim.diagnostic.is_enabled() then
+		vim.diagnostic.enable(false)
+		vim.notify('Диагностика скрыта', vim.log.levels.INFO)
+	else
+		vim.diagnostic.enable(true)
+		vim.notify('Диагностика показана', vim.log.levels.INFO)
+	end
+end, { desc = 'Показать/скрыть ошибки LSP' })
+
+vim.keymap.set('n', '<leader>uw', function()
+	vim.opt.wrap = not vim.opt.wrap:get()
+	vim.notify('Перенос строк: ' .. (vim.opt.wrap:get() and 'вкл' or 'выкл'), vim.log.levels.INFO)
+end, { desc = 'Перенос длинных строк вкл/выкл' })
+
+-- Панели (Trouble): см. lua/plugins/trouble.lua — <leader>qq/qQ/qf/qL/cs/cl
+-- LSP-клавиши: см. lua/plugins/lsp.lua — <leader>lr/la/lf/ls, gd, K, gi
+-- Терминал: <C-\>  (см. lua/plugins/toggleterm.lua)

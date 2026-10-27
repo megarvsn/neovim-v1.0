@@ -10,7 +10,7 @@ return {
 		dependencies = { "tpope/vim-dadbod" },
 		lazy = true,
 		keys = {
-			{ "<leader>db", "<cmd>DBUI<cr>", desc = "База данных (DBUI)" },
+			{ "<leader>db", "<cmd>DBUI<cr>", desc = "Обзор базы (DBUI)" },
 		},
 		init = function()
 			vim.g.db_ui_save_location = vim.fn.stdpath("data") .. "/db_ui"

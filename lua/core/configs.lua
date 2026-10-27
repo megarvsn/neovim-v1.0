@@ -18,6 +18,8 @@ vim.opt.softtabstop = 4
 vim.opt.scrolloff = 8
 vim.opt.wrap = false
 vim.opt.termguicolors = true
+-- Подсветка строки с курсором (визуальная опора при чтении строк кода)
+vim.opt.cursorline = true
 
 -- Локальная история версий: persistent undo (переживает закрытие Neovim и перезагрузку)
 local undodir = vim.fn.stdpath('data') .. '/undo'

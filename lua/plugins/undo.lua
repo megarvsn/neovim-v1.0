@@ -10,7 +10,7 @@ return {
 				function()
 					require("telescope").extensions.undo.undo()
 				end,
-				desc = "Undo history (локальная история версий)",
+				desc = "История правок (локальные версии)",
 			},
 		},
 	},

@@ -2,9 +2,21 @@ return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
 	opts = {
-		-- your configuration comes here
-		-- or leave it empty to use the default settings
-		-- refer to the configuration section below
+		-- Русские названия групп — видны в подсказках при нажатии <leader>
+		spec = {
+			{ "<leader>f", group = "Поиск (Find)" },
+			{ "<leader>g", group = "Git" },
+			{ "<leader>d", group = "База данных" },
+			{ "<leader>l", group = "LSP: код" },
+			{ "<leader>q", group = "Панели" },
+			{ "<leader>u", group = "Вид интерфейса" },
+
+			-- Одиночные
+			{ "<leader>e", desc = "Дерево файлов" },
+			{ "<leader>w", desc = "Сохранить" },
+			{ "<leader>x", desc = "Закрыть вкладку" },
+			{ "<leader>?", desc = "Все клавиши буфера" },
+		},
 	},
 	keys = {
 		{
@@ -12,7 +24,7 @@ return {
 			function()
 				require("which-key").show({ global = false })
 			end,
-			desc = "Buffer Local Keymaps (which-key)",
+			desc = "Все клавиши текущего буфера",
 		},
 	},
 }
