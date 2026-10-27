@@ -27,6 +27,10 @@ vim.keymap.set('n', '<leader>gP', ':Git pull<CR>', { desc = 'Получить (p
 vim.keymap.set('n', '<leader>gb', ':Git blame<CR>', { desc = 'Кто менял строки (blame)' })
 vim.keymap.set('n', '<leader>gl', ':Flog<CR>', { desc = 'История коммитов (граф)' })
 
+-- --- Стиль по html-классу (функция в lua/core/cssjump.lua) --------------
+vim.keymap.set('n', '<leader>lC', function() require('core.cssjump').jump() end,
+	{ desc = 'Определение класса/ID в стилях' })
+
 -- --- База данных (<leader>d) -------------------------------------------
 vim.keymap.set('n', '<leader>db', ':DBUI<CR>', { desc = 'Обзор базы (DBUI)' })
 

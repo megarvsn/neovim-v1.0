@@ -57,7 +57,10 @@ return {
 				callback = function(ev)
 					vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-					vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf, desc = "К определению" })
+					-- В html gd занят поиском класса/ID в стилях (core/cssjump.lua)
+					if vim.bo[ev.buf].filetype ~= "html" then
+						vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = ev.buf, desc = "К определению" })
+					end
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = ev.buf, desc = "Документация" })
 					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { buffer = ev.buf, desc = "К реализации" })
 					-- <C-k> занят навигацией по окнам в core/mappings.lua,
