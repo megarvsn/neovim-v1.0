@@ -19,6 +19,16 @@ vim.opt.softtabstop = 4
 -- Прочее
 -- Авто-перезагрузка файла при изменении извне (git pull, другой редактор)
 vim.opt.autoread = true
+-- Плавный скролл на Ctrl+d/Ctrl+u
+vim.opt.smoothscroll = true
+
+-- Сворачивание блоков по дереву Treesitter (za — свернуть/развернуть блок;
+-- zR/zM — развернуть/свернуть всё). Без парсера работает как обычный vim.
+-- Сворачивать вручную: по умолчанию всё раскрыто (foldlevelstart = 99).
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
 vim.opt.scrolloff = 8
 vim.opt.wrap = false
 vim.opt.termguicolors = true

@@ -11,6 +11,7 @@
   - [telescope.nvim](#telescopenvim--nvim-telescopetelescopenvim-нечёткий-поиск)
   - [telescope-undo.nvim](#telescope-undonvim--debuglooptelescope-undonvim-история-правок-файла)
   - [leap.nvim](#leapnvim--ggandorleapnvim-motion--быстрые-прыжки)
+  - [nvim-spectre](#nvim-spectre--nvim-packnvim-spectre-массовая-замена-по-проекту)
   - [neo-tree.nvim](#neo-treenvim--nvim-neo-treeneo-treenvim-дерево-файлов)
   - [nvim-treesitter](#nvim-treesitter--nvim-treesitternvim-treesitter-подсветка-и-парсеры)
   - [vim-matchup](#vim-matchup--andymassvim-matchup-парные-теги-и-скобки)
@@ -71,6 +72,15 @@
 - `gs` — «бумеранг»: прыжок в точку любого окна с включением выделения —
   операция выполняется прямо там (`d`/`c`/`y`/вставка), `Esc` — курсор
   возвращается обратно; удобно копировать «оттуда сюда» без ухода с места
+
+### nvim-spectre — [nvim-pack/nvim-spectre](https://github.com/nvim-pack/nvim-spectre) (массовая замена по проекту)
+Замена текста во всех файлах проекта с превью каждой замены перед применением —
+для классов/текстов, когда LSP-переименование не подходит (html-атрибуты,
+css-классы, обычные строки):
+- `<leader>fs` — открыть; ввести поиск → заменить; в панели каждая правка
+  подсвечена, отдельные можно отменить (`<Tab>` — снять выбор)
+- `<leader>fS` — то же, только в текущем файле
+- в visual-режиме `<leader>fs` — заменить выделенный текст
 
 ### neo-tree.nvim — [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) (дерево файлов)
 - `<leader>e` — открыть/закрыть боковую панель с файлами

@@ -13,11 +13,26 @@ vim.keymap.set('n', 'Y', 'y$', { desc = 'Копировать до конца с
 -- --- Файлы -------------------------------------------------------------
 vim.keymap.set('n', '<leader>e', ':Neotree left toggle reveal<CR>', { desc = 'Дерево файлов' })
 vim.keymap.set('n', '<leader>w', ':w<CR>', { desc = 'Сохранить файл' })
+-- Открыть текущий файл в браузере (вёрстка; php-окружение не подгрузится)
+vim.keymap.set('n', '<leader>o', function()
+	local f = vim.fn.expand('%')
+	if f == '' then
+		vim.notify('Файл не открыт — нечего смотреть в браузере', vim.log.levels.WARN)
+		return
+	end
+	local opener = vim.fn.has('mac') == 1 and 'open' or 'xdg-open'
+	vim.cmd('silent! !' .. opener .. ' "' .. f .. '"')
+	vim.notify('Открыт в браузере: ' .. f, vim.log.levels.INFO)
+end, { desc = 'Открыть файл в браузере' })
 
 -- --- Поиск (<leader>f) -------------------------------------------------
 vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>', { desc = 'Файл по имени' })
 vim.keymap.set('n', '<leader>fw', ':Telescope live_grep<CR>', { desc = 'Текст по проекту' })
+vim.keymap.set('n', '<leader>fr', ':Telescope resume<CR>', { desc = 'Вернуть последний результат поиска' })
 vim.keymap.set('n', '<leader>fb', ':Telescope buffers<CR>', { desc = 'Открытые буферы' })
+-- ]q / [q — следующий / предыдущий результат quickfix (<leader>fw, Trouble)
+vim.keymap.set('n', ']q', ':cnext<CR>', { desc = 'Следующий результат поиска/ошибки' })
+vim.keymap.set('n', '[q', ':cprev<CR>', { desc = 'Предыдущий результат поиска/ошибки' })
 vim.keymap.set('n', '<leader>fh', ':Telescope help_tags<CR>', { desc = 'Документация Neovim' })
 vim.keymap.set('n', '<leader>fo', ':Telescope oldfiles<CR>', { desc = 'Недавние файлы' })
 vim.keymap.set('n', '<leader>fu', ':Telescope undo<CR>', { desc = 'История правок файла (undo)' })
@@ -42,6 +57,11 @@ vim.keymap.set('n', '<c-k>', ':wincmd k<CR>', { desc = 'Окно вверх' })
 vim.keymap.set('n', '<c-j>', ':wincmd j<CR>', { desc = 'Окно вниз' })
 vim.keymap.set('n', '<c-h>', ':wincmd h<CR>', { desc = 'Окно влево' })
 vim.keymap.set('n', '<c-l>', ':wincmd l<CR>', { desc = 'Окно вправо' })
+-- Alt+h/j/k/l — размер окна (шире/уже/выше/ниже)
+vim.keymap.set('n', '<A-h>', ':vertical resize +2<CR>', { desc = 'Окно шире' })
+vim.keymap.set('n', '<A-l>', ':vertical resize -2<CR>', { desc = 'Окно уже' })
+vim.keymap.set('n', '<A-j>', ':resize -2<CR>', { desc = 'Окно ниже' })
+vim.keymap.set('n', '<A-k>', ':resize +2<CR>', { desc = 'Окно выше' })
 vim.keymap.set('n', '|', ':vsplit<CR>', { desc = 'Вертикальный сплит' })
 vim.keymap.set('n', '\\', ':split<CR>', { desc = 'Горизонтальный сплит' })
 
