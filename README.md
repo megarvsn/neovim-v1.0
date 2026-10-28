@@ -13,7 +13,7 @@
 
 | Файл | Содержание |
 |---|---|
-| [docs/install.md](docs/install.md) | Установка на чистый Mac и Linux, первый запуск и проверки |
+| [docs/install.md](docs/install.md) | Установка: Mac, Linux, Windows (WSL2 и нативный); первый запуск и проверки |
 | [docs/sshfs.md](docs/sshfs.md) | Проекты с сервера: sshfs-монтаж, `.ignore`, Способ 2 (git + локальный стек) |
 | [docs/database.md](docs/database.md) | MySQL через SSH-туннель: dadbod, обзорщик DBUI, запросы из буфера |
 | [docs/plugins.md](docs/plugins.md) | Все плагины: что делает, как пользоваться (с оглавлением) |
