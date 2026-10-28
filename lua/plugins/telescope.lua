@@ -1,3 +1,6 @@
+-- ПЛАГИН: telescope.nvim (https://github.com/nvim-telescope/telescope.nvim)
+-- Нечёткий поиск и навигация (файлы, текст, буферы, помощь).
+-- зависимости: nvim-lua/plenary.nvim, telescope-fzf-native.nvim.
 return {
 	{
 		'nvim-telescope/telescope.nvim', version = '*',

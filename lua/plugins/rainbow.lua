@@ -1,3 +1,6 @@
+-- ПЛАГИН: rainbow-delimiters.nvim (https://github.com/hiphish/rainbow-delimiters.nvim)
+-- Радужная раскраска вложенных пар: открывающий/закрывающий тег одного
+-- элемента — одного цвета.
 return {
 	{
 		"hiphish/rainbow-delimiters.nvim",

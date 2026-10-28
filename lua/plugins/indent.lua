@@ -1,3 +1,5 @@
+-- ПЛАГИН: indent-blankline.nvim (https://github.com/lukas-reineke/indent-blankline.nvim)
+-- Вертикальные линии по уровням отступов: видно вложенность блоков.
 -- Линии отступов: видно вложенность блоков в HTML/PHP/SCSS
 return {
 	{

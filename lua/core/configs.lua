@@ -1,3 +1,5 @@
+-- ЯДРО КОНФИГУРАЦИИ (не плагин): базовые настройки Neovim
+-- Опции и их документация: :help options или https://neovim.io/doc/user/options.html
 -- Line numbers
 vim.wo.number = true
 vim.wo.relativenumber = true

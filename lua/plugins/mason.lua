@@ -1,3 +1,6 @@
+-- ПЛАГИНЫ: mason-org/mason.nvim (https://github.com/mason-org/mason.nvim)
+--          mason-org/mason-lspconfig.nvim (https://github.com/mason-org/mason-lspconfig.nvim)
+-- Установка LSP-серверов и инструментов (prettier, stylua, sql-formatter).
 return {
 	{
 		"mason-org/mason.nvim",

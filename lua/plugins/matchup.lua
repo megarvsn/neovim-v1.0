@@ -1,3 +1,5 @@
+-- ПЛАГИН: vim-matchup (https://github.com/andymass/vim-matchup)
+-- Подсветка парного тега/скобки под курсором и прыжок по % (Treesitter).
 return {
 	{
 		"andymass/vim-matchup",

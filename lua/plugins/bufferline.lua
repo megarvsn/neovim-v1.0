@@ -1,3 +1,6 @@
+-- ПЛАГИН: bufferline.nvim (https://github.com/akinsho/bufferline.nvim)
+-- Вкладки-буферы сверху, отладочная навигация по <Tab>/<S-Tab>.
+-- зависимости: nvim-tree/nvim-web-devicons (иконки).
 return {
 	{
 		"akinsho/bufferline.nvim",

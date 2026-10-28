@@ -1,3 +1,5 @@
+-- ЯДРО КОНФИГУРАЦИИ (не плагин): все глобальные горячие клавиши
+-- Механизм маппингов: :help mapping или https://neovim.io/doc/user/map.html
 -- Leader
 vim.g.mapleader = ' '
 

@@ -1,3 +1,6 @@
+-- ПЛАГИН: nvim-treesitter (https://github.com/nvim-treesitter/nvim-treesitter), ветка main
+-- Парсеры и подсветка синтаксиса по дереву разбора; набор грамматик под стек.
+-- Официальное требование ветки main: без lazy-загрузки, требует tree-sitter-cli.
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",

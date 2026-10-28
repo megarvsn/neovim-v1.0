@@ -1,3 +1,5 @@
+-- ПЛАГИН: gitsigns.nvim (https://github.com/lewis6991/gitsigns.nvim)
+-- Git-знаки в строках, прыжки по правкам ([c/],]c), превью/стейдж/откат.
 return {
   {
     "lewis6991/gitsigns.nvim",

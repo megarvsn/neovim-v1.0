@@ -1,3 +1,5 @@
+-- ПЛАГИН: lualine.nvim (https://github.com/nvim-lualine/lualine.nvim)
+-- Статусная строка: режим, ветка git, диагностика, файл. Тема — kanagawa.
 return {
 	{
 		'nvim-lualine/lualine.nvim',

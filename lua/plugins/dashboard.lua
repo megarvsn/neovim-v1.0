@@ -1,3 +1,5 @@
+-- ПЛАГИН: dashboard-nvim (https://github.com/nvimdev/dashboard-nvim)
+-- Стартовый экран: обновление плагинов (u), поиск файлов (f), дерево (e).
 return {
 	"nvimdev/dashboard-nvim",
 	event = "VimEnter",

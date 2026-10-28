@@ -1,3 +1,6 @@
+-- ПЛАГИН: neo-tree.nvim (https://github.com/nvim-neo-tree/neo-tree.nvim)
+-- Дерево файлов (<leader>e), фильтрация кеша/upload в Битрикс-проектах.
+-- зависимости: nvim-lua/plenary.nvim, MunifTanjim/nui.nvim, nvim-tree/nvim-web-devicons.
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",

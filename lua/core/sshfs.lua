@@ -1,4 +1,7 @@
--- Монтирование проектов с сервера по sshfs (macFUSE).
+-- ЯДРО КОНФИГУРАЦИИ (не плагин): команды :SshfsMount/:SshfsUnmount/:SshfsList/:SshTunnel
+-- Монтирование проектов с сервера и туннели к MySQL.
+-- Используемые инструменты: sshfs (https://github.com/libfuse/sshfs),
+-- macFUSE (https://osxfuse.github.io/), OpenSSH (https://www.openssh.com/)
 -- Проект монтируется в ~/Projects/<имя>: открывается как обычная папка в Neovim.
 -- Опишите ваши проекты в таблице projects ниже:
 local projects = {

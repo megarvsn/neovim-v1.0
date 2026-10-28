@@ -1,5 +1,8 @@
+-- ПЛАГИНЫ: vim-dadbod (https://github.com/tpope/vim-dadbod)
+--          vim-dadbod-ui (https://github.com/kristijanhusak/vim-dadbod-ui)
+--          vim-dadbod-completion (https://github.com/kristijanhusak/vim-dadbod-completion)
 -- Доступ к MySQL с сервера: vim-dadbod + vim-dadbod-ui
--- Подключение через SSH-туннель: :SshTunnel 3306 (см. lua/plugins/sshfs.lua)
+-- Подключение через SSH-туннель: :SshTunnel 3306, затем <leader>db (см. lua/core/sshfs.lua)
 return {
 	{
 		"tpope/vim-dadbod",

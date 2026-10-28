@@ -1,4 +1,6 @@
--- Локальная система контроля версий: persistent undo + поиск по истории через telescope
+-- ПЛАГИН: telescope-undo.nvim (https://github.com/debugloop/telescope-undo.nvim)
+-- Локальная система контроля версий: persistent undo с поиском по истории и
+-- откатом отдельных изменений (<leader>fu).
 return {
 	{
 		"debugloop/telescope-undo.nvim",

@@ -1,3 +1,5 @@
+-- ПЛАГИН: which-key.nvim (https://github.com/folke/which-key.nvim)
+-- Справочник горячих клавиш на ходу: подписи на русском, логические группы.
 return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",

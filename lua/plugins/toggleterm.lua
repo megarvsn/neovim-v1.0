@@ -1,3 +1,5 @@
+-- ПЛАГИН: toggleterm.nvim (https://github.com/akinsho/toggleterm.nvim)
+-- Терминал внутри Neovim (Ctrl-\), навигация между окнами не теряется.
 return {
 	{
 		'akinsho/toggleterm.nvim',

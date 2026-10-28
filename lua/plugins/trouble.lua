@@ -1,3 +1,5 @@
+-- ПЛАГИН: trouble.nvim (https://github.com/folke/trouble.nvim)
+-- Панели: ошибки проекта/файла, символы, перекрёстные ссылки (quickfix-списки в окне).
 return {
 	{
 		"folke/trouble.nvim",

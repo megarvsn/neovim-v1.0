@@ -1,3 +1,5 @@
+-- ПЛАГИН: nvim-lint (https://github.com/mfussenegger/nvim-lint)
+-- Линтеры после сохранения (eslint для js/ts); результаты — в диагностику.
 return {
 	{
 		"mfussenegger/nvim-lint",

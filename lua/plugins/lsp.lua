@@ -1,3 +1,6 @@
+-- Точка настройки LSP: neovim/nvim-lspconfig (https://github.com/neovim/nvim-lspconfig)
+-- LSP-серверы под стек (html/cssls/ts_ls/intelephense/sqlls/emmet_ls/lua_ls),
+-- capabilities от cmp-nvim-lsp (https://github.com/hrsh7th/cmp-nvim-lsp).
 return {
 	{
 		"neovim/nvim-lspconfig",

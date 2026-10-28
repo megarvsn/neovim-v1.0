@@ -111,7 +111,7 @@ git push → git pull на сервере (+ сброс кеша Битрикс�
 Для правок вёрстки/шаблонов/фронтенда sshfs-способ остаётся основным: изменения
 незамедлительно видны на сервере, инфраструктура локального стека не нужна.
 
-## Доступ к MySQL (vim-dadbod)
+## Доступ к MySQL (vim-dadbod — [tpope/vim-dadbod](https://github.com/tpope/vim-dadbod), [vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui))
 
 1. `:SshTunnel 3306` — открывает туннель localhost:3306 → бд сервера.
 2. `<leader>db` (или `:DBUI`) — открывает обзорщик базы:
@@ -151,14 +151,14 @@ git push → git pull на сервере (+ сброс кеша Битрикс�
 
 ## Менеджер плагинов и стартовые экраны
 
-### lazy.nvim (менеджер плагинов)
+### lazy.nvim — [folke/lazy.nvim](https://github.com/folke/lazy.nvim) (менеджер плагинов)
 Устанавливает/обновляет плагины, управляет ленивой загрузкой.
 - `:Lazy` — панель управления: статус, обновление, очистка
 - `:Lazy sync` — синхронизировать (установить недостающее/удалить лишнее)
 - `:Lazy update` — обновить все плагины; `:Lazy restore` — откатить к версии из lockfile
 - Версии плагинов зафиксированы в `lazy-lock.json` — конфигурация воспроизводима.
 
-### dashboard-nvim (стартовый экран)
+### dashboard-nvim — [nvimdev/dashboard-nvim](https://github.com/nvimdev/dashboard-nvim) (стартовый экран)
 Показывается при запуске Neovim без аргументов.
 - `u` — обновить плагины (`Lazy update`)
 - `f` — открыть файл через Telescope
@@ -166,7 +166,7 @@ git push → git pull на сервере (+ сброс кеша Битрикс�
 
 ## Навигация и поиск
 
-### telescope.nvim (нечёткий поиск)
+### telescope.nvim — [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) (нечёткий поиск)
 Главный инструмент навигации по проекту (в т.ч. по sshfs-монтированному):
 - `<leader>ff` — найти файл по имени
 - `<leader>fw` — найти текст по всему проекту (live grep)
@@ -174,37 +174,42 @@ git push → git pull на сервере (+ сброс кеша Битрикс�
 - `<leader>fh` — поиск по документации (vim-справка)
 - Примеры внутри Telescope: `Ctrl+j/k` — перемещение, `<CR>` — открыть, `Tab` — не закрывая список.
 
-### telescope-undo.nvim (история правок файла)
+### telescope-undo.nvim — [debugloop/telescope-undo.nvim](https://github.com/debugloop/telescope-undo.nvim) (история правок файла)
 - `<leader>fu` — открыть историю; поиск; `<CR>` — откат к состоянию; в превью видно дифф.
 
-### leap.nvim (motion — быстрые прыжки)
+### leap.nvim — [ggandor/leap.nvim](https://github.com/ggandor/leap.nvim) (motion — быстрые прыжки)
 Быстрое перемещение по видимому тексту без колеса мыши:
 - `s` — прыжок к любому слову/месту на экране: набираете `s`, затем 1–2 буквы начала цели
 - `S` — то же, но во всех открытых окнах (сравнение двух файлов)
 - `gs` — прыжок к видимой точке в любом окне: файл открывается прямо там
 - После прыжка доступны обычные операции: `d` (удалить до цели), `c` (изменить), `y` (копировать) и т.д.
 
-### neo-tree.nvim (дерево файлов)
+### neo-tree.nvim — [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) (дерево файлов)
 - `<leader>e` — открыть/закрыть боковую панель с файлами
 - В дереве: `<CR>` — открыть файл, `a` — создать (имя с `/` создаст папку), `d` — удалить,
   `r` — переименовать, `c`/`x`/`p` — копировать/вырезать/вставить, `.` — показать контекстное меню.
 - В Битрикс-проектах скрывает `upload/` и кеш (`bitrix/cache` и т.п.); `.htaccess` и другие
   dot-файлы видны. Для Telescope — файл `.ignore` в корне проекта (см. раздел sshfs).
 
-### vim-matchup (парные теги и скобки)
+### nvim-treesitter — [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) (подсветка и парсеры)
+Основа для дерева разбора HTML/PHP/CSS/JS/SQL: на нём работают подсветка синтаксиса,
+vim-matchup, nvim-ts-autotag и отступы. Грамматики ставятся автоматически при первом
+запуске (`:TSUpdate` при обновлении).
+
+### vim-matchup — [andymass/vim-matchup](https://github.com/andymass/vim-matchup) (парные теги и скобки)
 Подсветка и прыжки по парным элементам (Treesitter; html, php+html, xml и др.):
 - стоит курсором на имени тега — парный тег (открывающий ↔ закрывающий) подсвечивается
 - `%` — прыжок к парному тегу/скобке и обратно
 - `ds%`, `cs%`, `ys%` — операции изменения (изменить, окружить) по паре
 
-### rainbow-delimiters.nvim (радужные вложенные пары)
+### rainbow-delimiters.nvim — [hiphish/rainbow-delimiters.nvim](https://github.com/hiphish/rainbow-delimiters.nvim) (радужные вложенные пары)
 Уровни вложенности раскрашиваются разными цветами: открывающий и закрывающий
 тег одного элемента — одного цвета, их родителей — другого. Наглядно в сложной
 верстке. Цвета нейтральные (отдельной интеграции с kanagawa у плагина нет).
 
 ## LSP и автодополнение
 
-### mason.nvim + mason-lspconfig (установка LSP-серверов)
+### mason.nvim — [mason-org/mason.nvim](https://github.com/mason-org/mason.nvim) + [mason-lspconfig](https://github.com/mason-org/mason-lspconfig.nvim) (установка LSP-серверов)
 Установлен набор под ваш стек: `html`, `cssls` (css/scss), `ts_ls` (js/ts),
 `intelephense` (PHP/Битрикс), `sqlls` (SQL), `emmet_ls` (HTML-эммет), `lua_ls` (конфиг самого nvim).
 - `:Mason` — менеджер пакетов (поставить/обновить/удалить инструмент)
@@ -212,7 +217,7 @@ git push → git pull на сервере (+ сброс кеша Битрикс�
 - intelephense не индексирует мусор Битрикс-проекта (upload, кеш, бэкапы —
   список исключений в `lua/plugins/lsp.lua`)
 
-### LSP (nvim-lspconfig) — в буферах с кодом
+### LSP — [neovim/nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) (в буферах с кодом)
 - `gd` — перейти к определению; `gi` — к реализации; `<Leader>D` — к типу
 - в html-файлах `gd` работает иначе: открывает выбор определений класса/ID
   в файлах стилей (см. `lua/core/cssjump.lua` и таблицу клавиш «LSP и код»)
@@ -223,7 +228,7 @@ git push → git pull на сервере (+ сброс кеша Битрикс�
 - `<Leader>ls` — подсказка по сигнатуре функции при вводе аргументов
 - Ошибки отображаются в тексте (`■`) и в колонке слева.
 
-### nvim-cmp (автодополнение)
+### nvim-cmp — [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) (автодополнение)
 Источники: LSP, файлы (path), буфера, SQL-колонки (dadbod), сниппеты (native Neovim).
 - `<C-Space>` — вызвать автодополнение вручную
 - `<Tab>`/`<S-Tab>` — выбрать следующий/предыдущий вариант
@@ -231,7 +236,7 @@ git push → git pull на сервере (+ сброс кеша Битрикс�
 - В командной строке `:` и `/` тоже работает автодополнение.
 - Сниппеты: `<Tab>` внутри сниппета — прыжок к следующему плейсхолдеру.
 
-### nvim-ts-autotag (авто-пары html-тегов)
+### nvim-ts-autotag — [windwp/nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag) (авто-пары html-тегов)
 Управляет парой тегов по дереву Treesitter (html, xml, php+html и др.):
 - при вводе `<div>` закрывающий `</div>` дописывается автоматически
 - правка имени одного тега меняет и парный ему: `<div></div>` →
@@ -239,38 +244,38 @@ git push → git pull на сервере (+ сброс кеша Битрикс�
   в том числе внутри смешанного php+html
 - если автозакрытие не нужно, его можно отключить в `lua/plugins/autotag.lua` (`enable_close = false`)
 
-### conform.nvim (форматирование при сохранении)
+### conform.nvim — [stevearc/conform.nvim](https://github.com/stevearc/conform.nvim) (форматирование при сохранении)
 На сохранении автоматически форматирует: prettier (html/css/scss/js/ts/json),
 sql-formatter (SQL), stylua (lua).
 - `:ConformInfo` — какие форматтеры активны в текущем файле
 - Ручной запуск: `<Leader>lf` или через LSP-форматирование.
 
-### nvim-lint (линтеры)
+### nvim-lint — [mfussenegger/nvim-lint](https://github.com/mfussenegger/nvim-lint) (линтеры)
 Eslint для js/ts — выводит на экран после сохранения файла; результаты видны в панелях Troubles.
 
 ## Отображение
 
-### bufferline.nvim (вкладки-буферы) и lualine (статусная строка)
+### bufferline.nvim — [akinsho/bufferline.nvim](https://github.com/akinsho/bufferline.nvim) и lualine — [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) (статусная строка)
 Вкладки вверху с иконками файлов и счётчиками ошибок; снизу — режим, git-ветка,
 ошибки/предупреждения в статусной строке, кодировка. Цвета обеих — из темы kanagawa.
 - `<Tab>` — следующая вкладка; `<S-Tab>` — предыдущая
 - `<Leader>x` — выбрать вкладку на закрытие; `<C-x>` — закрыть все, кроме текущей
 
-### which-key.nvim (подсказки команд на ходу)
+### which-key.nvim — [folke/which-key.nvim](https://github.com/folke/which-key.nvim) (подсказки команд на ходу)
 Справочник горячих клавиш прямо Neovim: нажали `<leader>` и держите — на экране все
 доступные команды с описаниями (все подписи на русском, сгруппированы логически:
 Поиск, Git, База данных, LSP, Панели, Вид интерфейса).
 - `<leader>?` — все клавиши текущего буфера
 - Подсказка появляется автоматически при начале комбинации и прерывается, если вы нажали уже известную клавишу.
 
-### trouble.nvim (панели: ошибки, символы)
+### trouble.nvim — [folke/trouble.nvim](https://github.com/folke/trouble.nvim) (панели: ошибки, символы)
 - `<leader>qq` — все ошибки/предупреждения по проекту
 - `<leader>qQ` — ошибки текущего файла
 - `<leader>qf` — список quickfix; `<leader>qL` — локальный список
 - `<leader>cs` — символы файла (дерево функций/переменных)
 - `<leader>cl` — ссылки/определения текущего символа
 
-### kanagawa (цветовая тема, вариант wave)
+### kanagawa — [rebelot/kanagawa.nvim](https://github.com/rebelot/kanagawa.nvim) (цветовая тема, вариант wave)
 Тёплая тёмная палитра: тёмно-бежевый фон, янтарные/оливковые/розовые акценты,
 умеренный контраст (спокойная для глаз, без холодной синевы). Непрозрачный фон.
 Вариант переключается в `lua/plugins/kanagawa.lua`:
@@ -279,21 +284,21 @@ Eslint для js/ts — выводит на экран после сохране
 - `lotus` — светлая тёплая
 - `:colorscheme kanagawa-dragon` / `:colorscheme kanagawa-lotus` — на лету
 
-### nvim-autopairs (авто-закрытие скобок и кавычек)
+### nvim-autopairs — [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) (авто-закрытие скобок и кавычек)
 При наборе `(` автоматически добавляется `)`; кавычки `'`/`"` тоже.
 - Интегрировано с автодополнением: выбор функции из подсказок получает скобки автоматически (`sort` → `sort(`)
 - `<C-v>` перед вставкой из буфера отключает автозакрытие (вставка «как есть»)
 
-### indent-blankline.nvim (линии отступов)
+### indent-blankline.nvim — [lukas-reineke/indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) (линии отступов)
 Тонкие вертикальные линии по уровням отступов — сразу видно вложенность блоков:
 где начинается/заканчивается функция, блок if, разметка HTML.
 Отключены для dashboard, neo-tree, терминала и Telescope.
 
-### lualine — статусная строка (см. раздел «Отображение»).
+### lualine — [nvim-lualine/lualine.nvim](https://github.com/nvim-lualine/lualine.nvim) (статусная строка — см. раздел «Отображение»).
 
 ## Терминал
 
-### toggleterm.nvim
+### toggleterm.nvim — [akinsho/toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
 - `<C-\>` — открыть/закрыть терминал (по умолчанию вертикально)
 - `<esc>` или `jj` — выйти из режима ввода в терминале
 - `<C-h/j/k/l>` — переключаться между окнами как обычно
@@ -441,7 +446,7 @@ Leader — `<leader>` = пробел. Проверить любую клавиш
 | `<leader>hp` | превью диффа правки (gitsigns) |
 | `<leader>hs` / `<leader>hr` | стейдж правки / откат правки (gitsigns) |
 
-## 7. База данных (vim-dadbod)
+## 7. База данных (vim-dadbod — [dadbod](https://github.com/tpope/vim-dadbod), [dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui))
 
 | Клавиши | Действие |
 |---|---|

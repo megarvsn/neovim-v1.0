@@ -1,3 +1,6 @@
+-- ПЛАГИНЫ: hrsh7th/nvim-cmp (https://github.com/hrsh7th/nvim-cmp)
+--   + hrsh7th/cmp-nvim-lsp, cmp-buffer, cmp-path, cmp-cmdline (тот же автор)
+-- Автодополнение: LSP, буфер, пути, SQL-колонки (dadbod-completion), cmdline.
 return {
 	{
 		"hrsh7th/nvim-cmp",

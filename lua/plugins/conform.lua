@@ -1,3 +1,5 @@
+-- ПЛАГИН: conform.nvim (https://github.com/stevearc/conform.nvim)
+-- Форматирование при сохранении: prettier (веб-стек), sql-formatter (SQL), stylua (Lua).
 return {
 	{
 		"stevearc/conform.nvim",
