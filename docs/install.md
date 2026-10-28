@@ -25,7 +25,7 @@ brew install mysql-client
 #   затем в ~/.zshrc добавьте строку:
 #   export PATH=/opt/homebrew/opt/mysql-client/bin:$PATH
 
-# 3. sshfs (если проекты идут через SSH-монтаж)
+# 3. sshfs (если проекты монтируются с сервера по SSH)
 brew install --cask macfuse            # macFUSE — до sshfs!
 brew install gromgit/fuse/sshfs-mac
 #   после установки macFUSE: расширенные настройки системы → разрешить
