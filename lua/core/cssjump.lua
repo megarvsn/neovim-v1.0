@@ -8,8 +8,12 @@
 --
 -- Ищутся и селектор класса («.имя»), и селектор идентификатора («#имя»)
 -- одним запросом, поэтому не важно, что именно под курсором.
--- Ограничение: SCSS-вложения вида `.nav { &-item {} }` составное имя
--- «nav-item» в исходнике не содержит и этим поиском не находится.
+--
+-- SCSS-вложения тоже находятся: `.nav { &-item {} }` соответствует классу
+-- «nav-item». Запрос собирается из прямого поиска и вариантов «&-хвост»
+-- для всех разрезов по дефису: «my-nav-item» ищет [.#]my-nav-item,
+-- &-nav-item и &-item (двойное вложение). Возможны совпадения, где такой
+-- хвост принадлежит другому родителю, — Telescope покажет файлы, выбор за вами.
 
 local M = {}
 
@@ -24,6 +28,22 @@ local function word_under_cursor()
 	return left .. right
 end
 
+-- Regex запроса: прямой поиск селектора «[.#]имя» плюс варианты SCSS-вложения
+-- «&-хвост» для каждого разреза имени по дефису («nav-item» -> &-item).
+-- \b отсекает совпадения с более длинными именами («searching» для «search»).
+local function build_search(word)
+	local patterns = { "[.#]" .. word .. "\\b" }
+	local i = word:find("-")
+	while i do
+		local suffix = word:sub(i + 1)
+		if suffix ~= "" then
+			table.insert(patterns, "&-" .. suffix .. "\\b")
+		end
+		i = word:find("-", i + 1)
+	end
+	return table.concat(patterns, "|")
+end
+
 function M.jump()
 	local word = word_under_cursor()
 	if word == "" then
@@ -33,7 +53,7 @@ function M.jump()
 
 	require("telescope.builtin").grep_string({
 		prompt_title = 'Определения: "' .. word .. '"',
-		search = "[.#]" .. word,
+		search = build_search(word),
 		use_regex = true,
 		-- Только файлы стилей — так в списке остаются определения,
 		-- а не использования (querySelector и т.п.)
