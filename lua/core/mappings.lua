@@ -36,6 +36,17 @@ vim.keymap.set('n', '[q', ':cprev<CR>', { desc = 'Предыдущий резу�
 vim.keymap.set('n', '<leader>fh', ':Telescope help_tags<CR>', { desc = 'Документация Neovim' })
 vim.keymap.set('n', '<leader>fo', ':Telescope oldfiles<CR>', { desc = 'Недавние файлы' })
 vim.keymap.set('n', '<leader>fu', ':Telescope undo<CR>', { desc = 'История правок файла (undo)' })
+-- ]d / [d — прыжки по ошибкам LSP/линтера (диагностике)
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end,
+	{ desc = 'Следующая ошибка' })
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end,
+	{ desc = 'Предыдущая ошибка' })
+-- <leader>f/ — нечёткий поиск по текущему файлу
+vim.keymap.set('n', '<leader>f/', function()
+	require('telescope.builtin').current_buffer_fuzzy_find({
+		previewer = false, layout_config = { width = 0.6, height = 0.4 }
+	})
+end, { desc = 'Поиск в текущем файле' })
 
 -- --- Git (<leader>g) ---------------------------------------------------
 vim.keymap.set('n', '<leader>gs', ':Git<CR>', { desc = 'Статус/стейджинг' })
@@ -70,6 +81,7 @@ vim.keymap.set('n', '<Tab>', ':BufferLineCycleNext<CR>', { desc = 'Следую�
 vim.keymap.set('n', '<s-Tab>', ':BufferLineCyclePrev<CR>', { desc = 'Предыдущая вкладка' })
 vim.keymap.set('n', '<Leader>x', ':BufferLinePickClose<CR>', { desc = 'Выбрать вкладку на закрытие' })
 vim.keymap.set('n', '<c-x>', ':BufferLineCloseOthers<CR>', { desc = 'Закрыть все вкладки кроме текущей' })
+vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', { desc = 'Закрыть текущий буфер (вкладку)' })
 
 -- --- Тумблеры интерфейса (<leader>u) -------------------------------------
 vim.keymap.set('n', '<leader>ud', function()
@@ -91,6 +103,13 @@ vim.keymap.set('n', '<leader>uF', function()
 	vim.g.disable_autoformat = not vim.g.disable_autoformat
 	vim.notify('Формат при сохранении: ' .. (vim.g.disable_autoformat and 'ВЫКЛ' or 'вкл'), vim.log.levels.INFO)
 end, { desc = 'Формат при сохранении вкл/выкл' })
+
+vim.keymap.set('n', '<leader>us', function()
+	local on = not vim.opt.spell:get()
+	vim.opt.spell = on
+	vim.opt.spelllang = 'ru,en'
+	vim.notify('Проверка орфографии (ru,en): ' .. (on and 'вкл' or 'выкл'), vim.log.levels.INFO)
+end, { desc = 'Орфография вкл/выкл (ru,en)' })
 
 -- Панели (Trouble): см. lua/plugins/trouble.lua — <leader>qq/qQ/qf/qL/cs/cl
 -- LSP-клавиши: см. lua/plugins/lsp.lua — <leader>lr/la/lf/ls, gd, K, gi
