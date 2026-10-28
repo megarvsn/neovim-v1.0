@@ -22,7 +22,7 @@
 - Тема kanagawa, вариант задаётся в `lua/plugins/kanagawa.lua`; на лету:
   `:colorscheme kanagawa-dragon` (темнее) / `:colorscheme kanagawa-lotus` (светлая).
 - Тумблеры: `<leader>ud` — показать/скрыть диагностические ошибки;
-  `<leader>uw` — перенос длинных строк.
+  `<leader>uw` — перенос длинных строк; `<leader>uF` — авто-формат при сохранении.
 
 ## Терминал внутри редактора
 

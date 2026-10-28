@@ -65,6 +65,7 @@ lua/
     ├── fugitive.lua      — git для своих серверов и GitHub
     ├── gitsigns.lua      — git-знаки в строках
     ├── telescope.lua     — поиск/навигация
+    ├── spectre.lua       — массовая замена по всем файлам проекта (с превью)
     ├── neo-tree.lua      — дерево файлов
     ├── bufferline.lua    — вкладки-буферы
     ├── lualine.lua       — статусная строка

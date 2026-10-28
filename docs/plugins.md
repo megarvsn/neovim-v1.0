@@ -10,7 +10,7 @@
 - [Навигация и поиск](#навигация-и-поиск)
   - [telescope.nvim](#telescopenvim--nvim-telescopetelescopenvim-нечёткий-поиск)
   - [telescope-undo.nvim](#telescope-undonvim--debuglooptelescope-undonvim-история-правок-файла)
-  - [leap.nvim](#leapnvim--ggandorleapnvim-motion--быстрые-прыжки)
+  - [leap.nvim](#leapnvim--andygleapnvim-motion--быстрые-прыжки)
   - [nvim-spectre](#nvim-spectre--nvim-packnvim-spectre-массовая-замена-по-проекту)
   - [neo-tree.nvim](#neo-treenvim--nvim-neo-treeneo-treenvim-дерево-файлов)
   - [nvim-treesitter](#nvim-treesitter--nvim-treesitternvim-treesitter-подсветка-и-парсеры)
@@ -57,6 +57,8 @@
 ### telescope.nvim — [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) (нечёткий поиск)
 Главный инструмент навигации по проекту (в т.ч. по sshfs-монтированному):
 - `<leader>ff` — найти файл по имени
+- `<leader>fr` — вернуть последний список Telescope (закрыли случайно — не искать заново)
+- `<leader>fo` — недавно открытые файлы
 - `<leader>fw` — найти текст по всему проекту (live grep)
 - `<leader>fb` — открытые буферы
 - `<leader>fh` — поиск по документации (vim-справка)
@@ -65,7 +67,7 @@
 ### telescope-undo.nvim — [debugloop/telescope-undo.nvim](https://github.com/debugloop/telescope-undo.nvim) (история правок файла)
 - `<leader>fu` — открыть историю; поиск; `<CR>` — откат к состоянию; в превью видно дифф.
 
-### leap.nvim — [ggandor/leap.nvim](https://github.com/ggandor/leap.nvim) (motion — быстрые прыжки)
+### leap.nvim — [andyg/leap.nvim](https://codeberg.org/andyg/leap.nvim) (motion — быстрые прыжки)
 Быстрое перемещение по видимому тексту без колеса мыши:
 - `s` — прыжок к любому слову/месту на экране: набираете `s`, затем 1–2 буквы начала цели
 - `S` — то же в открытых окнах кроме текущего (сравнение двух файлов)
@@ -91,8 +93,8 @@ css-классы, обычные строки):
 
 ### nvim-treesitter — [nvim-treesitter/nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) (подсветка и парсеры)
 Основа для дерева разбора HTML/PHP/CSS/JS/SQL: на нём работают подсветка синтаксиса,
-vim-matchup, nvim-ts-autotag и отступы. Грамматики ставятся автоматически при первом
-запуске (`:TSUpdate` при обновлении).
+vim-matchup, nvim-ts-autotag, сворачивание блоков (`za`) и отступы. Грамматики ставятся
+автоматически при первом запуске (`:TSUpdate` при обновлении).
 
 ### vim-matchup — [andymass/vim-matchup](https://github.com/andymass/vim-matchup) (парные теги и скобки)
 Подсветка и прыжки по парным элементам (Treesitter; html, php+html, xml и др.):
@@ -126,7 +128,7 @@ vim-matchup, nvim-ts-autotag и отступы. Грамматики ставя�
 - Ошибки отображаются в тексте (`■`) и в колонке слева.
 
 ### nvim-cmp — [hrsh7th/nvim-cmp](https://github.com/hrsh7th/nvim-cmp) (автодополнение)
-Источники: LSP, файлы (path), буфера, SQL-колонки (dadbod), сниппеты (native Neovim).
+Источники: LSP, файлы на диске (path), содержимое открытых буферов, SQL-колонки (dadbod), сниппеты.
 - `<C-Space>` — вызвать автодополнение вручную
 - `<Tab>`/`<S-Tab>` — выбрать следующий/предыдущий вариант
 - `<CR>` — принять предложение; `<C-e>` — закрыть меню

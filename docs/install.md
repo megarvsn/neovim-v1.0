@@ -11,7 +11,7 @@
 
 ## Установка на чистый Mac
 
-Neovim 0.9.5+ минимум (актуальный конфиг рассчитан на 0.12+ — treesitter main-branch).
+Нужен Neovim 0.12+ (конфиг рассчитан на него — грамматики treesitter берутся из ветки main).
 
 ```bash
 # 0. Компилятор (нужен для сборки tree-sitter грамматик)
@@ -44,10 +44,10 @@ ripgrep (поиск Telescope), tree-sitter-cli и компилятор C (сб�
 mysql-клиент, sshfs + fuse3.
 
 Пакет `neovim` в репозиториях дистрибутивов обычно старее 0.11, поэтому Neovim
-рекомендуется ставить из офиц. релизов (tarball или AppImage, без компиляции):
+рекомендуется ставить из официальных релизов (tarball или AppImage, без компиляции):
 
 ```bash
-# Neovim 0.12+ из офиц. релиза (x86_64; для arm64 файл nvim-linux-arm64.tar.gz)
+# Neovim 0.12+ из официального релиза (x86_64; для arm64 файл nvim-linux-arm64.tar.gz)
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
 sudo rm -rf /opt/nvim && sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 sudo ln -sf /opt/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
