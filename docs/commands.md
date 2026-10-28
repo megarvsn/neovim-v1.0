@@ -51,6 +51,7 @@
 | `:Telescope find_files` | поиск файла (= `<leader>ff`) |
 | `:Telescope live_grep` | поиск текста по проекту (= `<leader>fw`) |
 | `:Telescope buffers` | переключение буферов (= `<leader>fb`) |
+| `:Telescope oldfiles` | недавние файлы (= `<leader>fo`) |
 | `:Telescope help_tags` | поиск по документации (= `<leader>fh`) |
 | `:Neotree left toggle reveal` | дерево файлов (= `<leader>e`) |
 | `:Trouble diagnostics toggle` | панель ошибок (= `<leader>qq`) |

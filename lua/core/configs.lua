@@ -17,6 +17,8 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 
 -- Прочее
+-- Авто-перезагрузка файла при изменении извне (git pull, другой редактор)
+vim.opt.autoread = true
 vim.opt.scrolloff = 8
 vim.opt.wrap = false
 vim.opt.termguicolors = true

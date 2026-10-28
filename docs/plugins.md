@@ -29,6 +29,10 @@
   - [kanagawa](#kanagawa--rebelotkanagawanvim-цветовая-тема-вариант-wave)
   - [nvim-autopairs](#nvim-autopairs--windwpnvim-autopairs-авто-закрытие-скобок-и-кавычек)
   - [indent-blankline.nvim](#indent-blanklinenvim--lukas-reinekeindent-blanklinenvim-линии-отступов)
+- [Git и база данных](#git-и-база-данных)
+  - [vim-fugitive + vim-flog](#vim-fugitive--vim-flog--tpopevim-fugitive-rbongvim-flog)
+  - [gitsigns.nvim](#gitsignsnvim--lewis6991gitsignsnvim)
+  - [vim-dadbod + vim-dadbod-ui](#vim-dadbod--vim-dadbod-ui--tpopevim-dadbod-kristijanhusakvim-dadbod-ui)
 - [Терминал](#терминал)
   - [toggleterm.nvim](#toggletermnvim--akinshotoggletermnvim)
 
@@ -63,9 +67,10 @@
 ### leap.nvim — [ggandor/leap.nvim](https://github.com/ggandor/leap.nvim) (motion — быстрые прыжки)
 Быстрое перемещение по видимому тексту без колеса мыши:
 - `s` — прыжок к любому слову/месту на экране: набираете `s`, затем 1–2 буквы начала цели
-- `S` — то же, но во всех открытых окнах (сравнение двух файлов)
-- `gs` — прыжок к видимой точке в любом окне: файл открывается прямо там
-- После прыжка доступны обычные операции: `d` (удалить до цели), `c` (изменить), `y` (копировать) и т.д.
+- `S` — то же в открытых окнах кроме текущего (сравнение двух файлов)
+- `gs` — «бумеранг»: прыжок в точку любого окна с включением выделения —
+  операция выполняется прямо там (`d`/`c`/`y`/вставка), `Esc` — курсор
+  возвращается обратно; удобно копировать «оттуда сюда» без ухода с места
 
 ### neo-tree.nvim — [nvim-neo-tree/neo-tree.nvim](https://github.com/nvim-neo-tree/neo-tree.nvim) (дерево файлов)
 - `<leader>e` — открыть/закрыть боковую панель с файлами
@@ -83,7 +88,6 @@ vim-matchup, nvim-ts-autotag и отступы. Грамматики ставя�
 Подсветка и прыжки по парным элементам (Treesitter; html, php+html, xml и др.):
 - стоит курсором на имени тега — парный тег (открывающий ↔ закрывающий) подсвечивается
 - `%` — прыжок к парному тегу/скобке и обратно
-- `ds%`, `cs%`, `ys%` — операции изменения (изменить, окружить) по паре
 
 ### rainbow-delimiters.nvim — [hiphish/rainbow-delimiters.nvim](https://github.com/hiphish/rainbow-delimiters.nvim) (радужные вложенные пары)
 Уровни вложенности раскрашиваются разными цветами: открывающий и закрывающий
@@ -132,6 +136,7 @@ vim-matchup, nvim-ts-autotag и отступы. Грамматики ставя�
 sql-formatter (SQL), stylua (lua).
 - `:ConformInfo` — какие форматтеры активны в текущем файле
 - Ручной запуск: `<Leader>lf` или через LSP-форматирование.
+- `<Leader>uF` — тумблер авто-формата при сохранении (например, надолго выключить, правя чужой код).
 
 ### nvim-lint — [mfussenegger/nvim-lint](https://github.com/mfussenegger/nvim-lint) (линтеры)
 Eslint проверяет js/ts после сохранения файла; найденные им проблемы видны в Trouble.
@@ -170,12 +175,29 @@ Eslint проверяет js/ts после сохранения файла; на
 ### nvim-autopairs — [windwp/nvim-autopairs](https://github.com/windwp/nvim-autopairs) (авто-закрытие скобок и кавычек)
 При наборе `(` автоматически добавляется `)`; кавычки `'`/`"` тоже.
 - Интегрировано с автодополнением: выбор функции из подсказок получает скобки автоматически (`sort` → `sort(`)
-- `<C-v>` перед вставкой из буфера отключает автозакрытие (вставка «как есть»)
 
 ### indent-blankline.nvim — [lukas-reineke/indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim) (линии отступов)
 Тонкие вертикальные линии по уровням отступов — сразу видно вложенность блоков:
 где начинается/заканчивается функция, блок if, разметка HTML.
 Отключены для dashboard, neo-tree, терминала и Telescope.
+
+## Git и база данных
+Git-плагины описаны в туториале [06-git.md](../tutorial/06-git.md) (цикл работы),
+команды — в [commands.md («Git»)](commands.md#git-fugitivefloggitsigns); БД —
+в [database.md](database.md). Кратко:
+
+### vim-fugitive + vim-flog — [tpope/vim-fugitive](https://github.com/tpope/vim-fugitive), [rbong/vim-flog](https://github.com/rbong/vim-flog)
+- `<leader>gs` — git-статус по-всему проекту (в нём `-` — стейдж/анстейдж файла, `cc` — коммит)
+- `<leader>gc` — коммит, `<leader>gp` — push, `<leader>gP` — pull, `<leader>gb` — blame
+- `<leader>gl` — граф истории (flog); свои серверы и GitHub работают одинаково
+
+### gitsigns.nvim — [lewis6991/gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- Знаки у строк слева (изменено/добавлено/удалено), `[c`/`]c` — прыжки по правкам
+- `<leader>hp` — превью правки, `<leader>hs` — стейдж, `<leader>hr` — откат
+
+### vim-dadbod + vim-dadbod-ui — [tpope/vim-dadbod](https://github.com/tpope/vim-dadbod), [kristijanhusak/vim-dadbod-ui](https://github.com/kristijanhusak/vim-dadbod-ui)
+- `<leader>db` — обзорщик базы; в SQL-файле `<CR>` — выполнить, `<Leader>S` — то же
+- Подключение строго через SSH-туннель: подробности в [database.md](database.md)
 
 ## Терминал
 

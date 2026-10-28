@@ -19,6 +19,7 @@ vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>', { desc = 'Фай�
 vim.keymap.set('n', '<leader>fw', ':Telescope live_grep<CR>', { desc = 'Текст по проекту' })
 vim.keymap.set('n', '<leader>fb', ':Telescope buffers<CR>', { desc = 'Открытые буферы' })
 vim.keymap.set('n', '<leader>fh', ':Telescope help_tags<CR>', { desc = 'Документация Neovim' })
+vim.keymap.set('n', '<leader>fo', ':Telescope oldfiles<CR>', { desc = 'Недавние файлы' })
 vim.keymap.set('n', '<leader>fu', ':Telescope undo<CR>', { desc = 'История правок файла (undo)' })
 
 -- --- Git (<leader>g) ---------------------------------------------------
@@ -65,6 +66,11 @@ vim.keymap.set('n', '<leader>uw', function()
 	vim.opt.wrap = not vim.opt.wrap:get()
 	vim.notify('Перенос строк: ' .. (vim.opt.wrap:get() and 'вкл' or 'выкл'), vim.log.levels.INFO)
 end, { desc = 'Перенос длинных строк вкл/выкл' })
+
+vim.keymap.set('n', '<leader>uF', function()
+	vim.g.disable_autoformat = not vim.g.disable_autoformat
+	vim.notify('Формат при сохранении: ' .. (vim.g.disable_autoformat and 'ВЫКЛ' or 'вкл'), vim.log.levels.INFO)
+end, { desc = 'Формат при сохранении вкл/выкл' })
 
 -- Панели (Trouble): см. lua/plugins/trouble.lua — <leader>qq/qQ/qf/qL/cs/cl
 -- LSP-клавиши: см. lua/plugins/lsp.lua — <leader>lr/la/lf/ls, gd, K, gi

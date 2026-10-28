@@ -23,6 +23,11 @@ return {
 			vim.api.nvim_create_autocmd("BufWritePre", {
 				pattern = "*",
 				callback = function(args)
+					-- Тумблер <leader>uF: временно отключить авто-формат
+					-- (правка чужого кода — без переформатирования всего файла)
+					if vim.g.disable_autoformat then
+						return
+					end
 					require("conform").format({ bufnr = args.buf })
 				end,
 			})
