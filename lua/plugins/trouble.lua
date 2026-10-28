@@ -3,7 +3,7 @@
 return {
 	{
 		"folke/trouble.nvim",
-		opts = {}, --for default options, refer to the configuration section for custom setup.
+		opts = {}, -- дефолтные опции; детали — в разделе configuration документации
 		cmd = "Trouble",
 		keys = {
 			{

@@ -1,22 +1,22 @@
 -- ЯДРО КОНФИГУРАЦИИ (не плагин): базовые настройки Neovim
 -- Опции и их документация: :help options или https://neovim.io/doc/user/options.html
--- Line numbers
+-- Номера строк
 vim.wo.number = true
 vim.wo.relativenumber = true
 
--- Mouse
+-- Мышь
 vim.opt.mouse = "a"
 vim.opt.mousefocus = true
 
--- Clipboard
+-- Буфер обмена
 vim.opt.clipboard = "unnamedplus"
 
--- Ident Settings
+-- Отступы
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 
--- Other
+-- Прочее
 vim.opt.scrolloff = 8
 vim.opt.wrap = false
 vim.opt.termguicolors = true
@@ -33,12 +33,12 @@ vim.opt.undodir = undodir
 vim.opt.completeopt = 'menu,menuone,noselect'
 vim.opt.updatetime = 250
 
--- Fillchars
+-- Символы-заполнители (fillchars)
 vim.opt.fillchars = {
 	vert = "│",
 	fold = "⠀",
-	eob = " ", -- suppress ~ at EndOfBuffer
-	-- diff = "⣿", -- alternatives = ⣿ ░ ─ ╱
+	eob = " ", -- без «~» в пустой области после конца буфера
+	-- diff = "⣿", -- варианты: ⣿ ░ ─ ╱
 	msgsep = "‾",
 	foldopen = "▾",
 	foldsep = "│",

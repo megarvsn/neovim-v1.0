@@ -6,7 +6,7 @@ return {
 		'nvim-telescope/telescope.nvim', version = '*',
 		dependencies = {
 			'nvim-lua/plenary.nvim',
-			-- optional but recommended
+			-- опционально, но рекомендуется
 			{ 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 		},
 		config = function()

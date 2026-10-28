@@ -19,7 +19,8 @@ return {
 				vim.keymap.set('t', '<C-w>', [[<C-\><C-n><C-w>]], opts)
 			end
 
-			-- if you only want these mappings for toggle term use term://*toggleterm#* instead
+			-- если маппинги нужны только для терминалов toggleterm, используйте
+			-- autocmd с pattern term://*toggleterm#*
 			vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 		end
 	}
