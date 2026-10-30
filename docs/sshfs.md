@@ -16,7 +16,7 @@
 1. Опишите проекты в `lua/core/sshfs.lua`:
    ```lua
    local projects = {
-       ["baza23"] = "baza23.ru:/home/bitrix/путь/к/проекту",
+       ["baza23"] = "baza23.ru:/home/bitrix/www",
    }
    ```
 2. `:SshfsMount baza23` — монтирует серверный каталог в `~/Projects/baza23`.
