@@ -198,7 +198,7 @@ Eslint проверяет js/ts после сохранения файла; на
 Отключены для dashboard, neo-tree, терминала и Telescope.
 
 ## Git и база данных
-Git-плагины описаны в туториале [06-git.md](../tutorial/06-git.md) (цикл работы),
+Git-плагины описаны в туториале [07-git.md](../tutorial/07-git.md) (цикл работы),
 команды — в [commands.md («Git»)](commands.md#git-fugitivefloggitsigns); БД —
 в [database.md](database.md). Кратко:
 

@@ -18,6 +18,7 @@
 | [docs/database.md](docs/database.md) | MySQL через SSH-туннель: dadbod, обзорщик DBUI, запросы из буфера |
 | [docs/plugins.md](docs/plugins.md) | Все плагины: что делает, как пользоваться (с оглавлением) |
 | [docs/keymap.md](docs/keymap.md) | Полный справочник горячих клавиш (11 разделов) |
+| [docs/regex.md](docs/regex.md) | Регулярные выражения: vim-regex и ripgrep, `:s`/`:g`, подробные рецепты |
 | [docs/commands.md](docs/commands.md) | Реестр `:команд` (файлы, плагины, LSP, git, БД, sshfs, undo, терминал) |
 
 ## Туториал (каталог `tutorial/`)
@@ -29,13 +30,14 @@
 | [tutorial/01-first-steps.md](tutorial/01-first-steps.md) | Первые шаги: открытие файла, перемещение, правки, сохранение, выход |
 | [tutorial/02-navigation.md](tutorial/02-navigation.md) | Навигация по проекту: Telescope, neo-tree, окна/вкладки, leap |
 | [tutorial/03-editing.md](tutorial/03-editing.md) | Редактирование: операторы, текстовые объекты, поиск/замена, визуальный режим |
-| [tutorial/04-html-scss.md](tutorial/04-html-scss.md) | Ежедневный фронтенд: авто-теги, переход к стилям, форматирование |
-| [tutorial/05-lsp.md](tutorial/05-lsp.md) | Работа с кодом: автодополнение, ошибки, переименование, документация |
-| [tutorial/06-git.md](tutorial/06-git.md) | Git-цикл: знаки правок → стейдж → коммит → push |
-| [tutorial/07-server.md](tutorial/07-server.md) | Работа с Bitrix-проектом на сервере (sshfs) |
-| [tutorial/08-database.md](tutorial/08-database.md) | База данных: туннель, обзорщик, запросы |
-| [tutorial/09-undo-history.md](tutorial/09-undo-history.md) | Локальная история версий и восстановление файла |
-| [tutorial/10-help-tuning.md](tutorial/10-help-tuning.md) | Справка, темы, тумблеры, терминал, добавление проекта/плагина |
+| [tutorial/04-search-replace.md](tutorial/04-search-replace.md) | Поиск и замена: буфер/файл/проект — сразу все или с подтверждением; регулярные выражения |
+| [tutorial/05-html-scss.md](tutorial/05-html-scss.md) | Ежедневный фронтенд: авто-теги, переход к стилям, форматирование |
+| [tutorial/06-lsp.md](tutorial/06-lsp.md) | Работа с кодом: автодополнение, ошибки, переименование, документация |
+| [tutorial/07-git.md](tutorial/07-git.md) | Git-цикл: знаки правок → стейдж → коммит → push |
+| [tutorial/08-server.md](tutorial/08-server.md) | Работа с Bitrix-проектом на сервере (sshfs) |
+| [tutorial/09-database.md](tutorial/09-database.md) | База данных: туннель, обзорщик, запросы |
+| [tutorial/10-undo-history.md](tutorial/10-undo-history.md) | Локальная история версий и восстановление файла |
+| [tutorial/11-help-tuning.md](tutorial/11-help-tuning.md) | Справка, темы, тумблеры, терминал, добавление проекта/плагина |
 
 ## Архитектура конфигурации
 
