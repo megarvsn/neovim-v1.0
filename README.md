@@ -9,6 +9,9 @@
 Документация читается по порядку: сначала обзор и архитектура (здесь), затем детали
 по темам (каталог `docs/`), практические уроки — в каталоге `tutorial/`.
 
+**Шпаргалка рабочих клавиш: [docs/cheatsheet.md](docs/cheatsheet.md)** —
+«что хочу сделать → что нажать», в порядке сеанса работы.
+
 ## Документация (каталог `docs/`)
 
 | Файл | Содержание |
@@ -17,7 +20,6 @@
 | [docs/sshfs.md](docs/sshfs.md) | Проекты с сервера: sshfs-монтаж, `.ignore`, Способ 2 (git + локальный стек) |
 | [docs/database.md](docs/database.md) | MySQL через SSH-туннель: dadbod, обзорщик DBUI, запросы из буфера |
 | [docs/plugins.md](docs/plugins.md) | Все плагины: что делает, как пользоваться (с оглавлением) |
-| [docs/cheatsheet.md](docs/cheatsheet.md) | Шпаргалка рабочего цикла: «что хочу сделать → что нажать», в таблицах |
 | [docs/keymap.md](docs/keymap.md) | Полный справочник горячих клавиш (11 разделов) |
 | [docs/regex.md](docs/regex.md) | Регулярные выражения: vim-regex и ripgrep, `:s`/`:g`, подробные рецепты |
 | [docs/commands.md](docs/commands.md) | Реестр `:команд` (файлы, плагины, LSP, git, БД, sshfs, undo, терминал) |
@@ -28,6 +30,7 @@
 
 | Глава | Содержание |
 |---|---|
+| [tutorial/README.md](tutorial/README.md) | **Оглавление туториала** |
 | [tutorial/01-first-steps.md](tutorial/01-first-steps.md) | Первые шаги: открытие файла, перемещение, правки, сохранение, выход |
 | [tutorial/02-navigation.md](tutorial/02-navigation.md) | Навигация по проекту: Telescope, neo-tree, окна/вкладки, leap |
 | [tutorial/03-editing.md](tutorial/03-editing.md) | Редактирование: операторы, текстовые объекты, поиск/замена, визуальный режим |
