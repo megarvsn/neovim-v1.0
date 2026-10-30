@@ -17,6 +17,7 @@
 | [docs/sshfs.md](docs/sshfs.md) | Проекты с сервера: sshfs-монтаж, `.ignore`, Способ 2 (git + локальный стек) |
 | [docs/database.md](docs/database.md) | MySQL через SSH-туннель: dadbod, обзорщик DBUI, запросы из буфера |
 | [docs/plugins.md](docs/plugins.md) | Все плагины: что делает, как пользоваться (с оглавлением) |
+| [docs/cheatsheet.md](docs/cheatsheet.md) | Шпаргалка рабочего цикла: «что хочу сделать → что нажать», в таблицах |
 | [docs/keymap.md](docs/keymap.md) | Полный справочник горячих клавиш (11 разделов) |
 | [docs/regex.md](docs/regex.md) | Регулярные выражения: vim-regex и ripgrep, `:s`/`:g`, подробные рецепты |
 | [docs/commands.md](docs/commands.md) | Реестр `:команд` (файлы, плагины, LSP, git, БД, sshfs, undo, терминал) |
